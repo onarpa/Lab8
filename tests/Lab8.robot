@@ -10,6 +10,7 @@ ${URL}    https://www.kku.ac.th
 Open KKU Website
     Title Should Be    มหาวิทยาลัยขอนแก่น
 
+
 *** Keywords ***
 Open Browser To KKU
     ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
@@ -17,7 +18,8 @@ Open Browser To KKU
     Call Method    ${options}    add_argument    --no-sandbox
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --disable-gpu
-    Call Method    ${options}    add_argument    --window-size=1920,1080
 
     Create Webdriver    Chrome    options=${options}
+    Set Window Size    1920    1080
     Go To    ${URL}
+
