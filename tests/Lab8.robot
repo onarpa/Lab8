@@ -1,21 +1,24 @@
-
 *** Settings ***
 Library    SeleniumLibrary
+Suite Setup    Open Browser To KKU
+Suite Teardown    Close Browser
 
 *** Variables ***
+${URL}        https://www.kku.ac.th
 ${BROWSER}    chrome
-${URL}        https://computing.kku.ac.th
 
 *** Test Cases ***
 Open KKU Website
-    Open Browser    ${URL}    ${BROWSER}    options=${CHROME OPTIONS}
-    Title Should Be    computing
-    Close Browser
+    Title Should Be    มหาวิทยาลัยขอนแก่น
 
 *** Keywords ***
-${CHROME OPTIONS}
-    ${options}=    Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys
-    Call Method    ${options}    add_argument    --headless=new
-    Call Method    ${options}    add_argument    --no-sandbox
-    Call Method    ${options}    add_argument    --disable-dev-shm-usage
-    [Return]    ${options}
+Open Browser To KKU
+    Open Browser
+    ...    ${URL}
+    ...    ${BROWSER}
+    ...    options=add_argument(--headless),
+    ...    add_argument(--no-sandbox),
+    ...    add_argument(--disable-dev-shm-usage),
+    ...    add_argument(--disable-gpu),
+    ...    add_argument(--window-size=1920,1080)
+    Maximize Browser Window
