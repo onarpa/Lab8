@@ -10,7 +10,8 @@ ${EXPECTED_TITLE}    มหาวิทยาลัยขอนแก่น
 *** Test Cases ***
 Open KKU Website Title Should Be Correct
     [Documentation]    Verify KKU homepage title
-    Title Should Contain    มหาวิทยาลัยขอนแก่น
+    ${title}=    Get Title
+    Should Contain    ${title}    มหาวิทยาลัยขอนแก่น
 
 KKU Website Should Contain University Name
     [Documentation]    Verify page contains university name
