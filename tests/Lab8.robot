@@ -28,6 +28,8 @@ Open Browser To KKU
     Call Method    ${options}    add_argument    --disable-dev-shm-usage
     Call Method    ${options}    add_argument    --disable-gpu
 
-    Create Webdriver    Chrome    executable_path=/usr/bin/chromedriver    options=${options}
+    ${service}=    Evaluate    sys.modules['selenium.webdriver.chrome.service'].Service("/usr/bin/chromedriver")    sys
+
+    Create Webdriver    Chrome    options=${options}    service=${service}
     Set Window Size    1920    1080
     Go To    ${URL}
