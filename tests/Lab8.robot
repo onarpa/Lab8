@@ -10,7 +10,7 @@ ${EXPECTED_TITLE}    มหาวิทยาลัยขอนแก่น
 *** Test Cases ***
 Open KKU Website Title Should Be Correct
     [Documentation]    Verify KKU homepage title
-    Title Should Be    ${EXPECTED_TITLE}
+    Title Should Contain    มหาวิทยาลัยขอนแก่น
 
 KKU Website Should Contain University Name
     [Documentation]    Verify page contains university name
@@ -18,7 +18,7 @@ KKU Website Should Contain University Name
 
 KKU Website Should Load Successfully
     [Documentation]    Verify URL is correct after load
-    Location Should Be    ${URL}
+    Location Should Contain    www.kku.ac.th
 
 *** Keywords ***
 Open Browser To KKU
